@@ -1,25 +1,447 @@
 <!doctype html>
 <html>
+
 <head>
 	<title>Frontend Coding Test</title>
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 	<style type="text/css">
 		.picture {
 			background-color: #F9F9F9;
-			border: 1px solid #CCCCCC; padding: 3px;
+			border: 1px solid #CCCCCC;
+			padding: 3px;
 			text-align: center;
 			margin: 0 0 18px 0;
 			width: 647px;
 			color: #000;
 		}
-		
+
 		.picture img {
 			border: 1px solid #CCCCCC;
-			vertical-align:middle; margin-bottom: 3px;
+			vertical-align: middle;
+			margin-bottom: 3px;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+		}
+
+		.left-nav-wrapper {
+			width: 10%;
+			height: auto;
+			background: navy;
+			overflow-y: auto;
+			position: absolute;
+			left: 0;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			transition: all 0.5s;
+		}
+
+		ul.navigation-panel {
+			padding: 0px;
+			margin: 0;
+		}
+
+		.left-nav-wrapper ul li {
+			padding: 10px;
+			list-style: none;
+			cursor: pointer;
+		}
+
+		.cross-btn {
+			display: none;
+		}
+
+		.icon-sidebar {
+			width: 50px;
+			height: 50px;
+			margin-left: 17%;
+		}
+
+		.icon-title {
+			text-align: center;
+			color: #95a5a6;
+		}
+
+		.right-content-wrapper {
+			margin-left: 7%;
+			width: 95%;
+		}
+
+		.right-content-wrapper p {
+			margin-top: 0px
+		}
+
+		.right-content-wrapper .content {
+			display: none;
+		}
+
+		#content-1 {
+			border: none;
+		}
+
+		#top {
+			display: inline-block;
+			border: 1px solid black;
+		}
+
+		.Row {
+			display: table;
+			width: 100%;
+			table-layout: fixed;
+			border-spacing: 10px;
+		}
+
+		.Row-keluhan {
+			display: table;
+			width: 100%;
+			table-layout: fixed;
+			border-spacing: 5px;
+		}
+
+		.Column {
+			display: table-cell;
+			background-color: white;
+			border: 1px solid grey;
+		}
+
+		.Column-keluhan {
+			display: table-cell;
+			background-color: white;
+			border: 1px solid grey;
+			border-radius: 10px;
+		}
+
+		.Column-2 {
+			display: table-cell;
+			background-color: lightblue;
+			border-radius: 10px;
+		}
+
+		.Column-3 {
+			display: table-cell;
+			background-color: navy;
+		}
+
+		.Sub-Column-3 {
+			display: table-cell;
+			background-color: yellow;
+			color: navy;
+			padding: 5px;
+			width: 14%;
+		}
+
+		.Sub-Column-2 {
+			display: table-cell;
+			color: navy;
+			padding: 5px;
+			width: 20%;
+			font-size: 10px;
+		}
+
+		.Sub-Column-2-grey {
+			display: table-cell;
+			background-color: grey;
+			color: black;
+			width: 5%;
+			height: 5px;
+			font-size: 10px;
+		}
+
+		.Sub-Column-2-green {
+			display: table-cell;
+			background-color: green;
+			color: black;
+			width: 5%;
+			height: 5px;
+			font-size: 10px;
+			border-radius: 10px;
+			padding: 5px;
+		}
+
+		.Sub-Column-2-red {
+			display: table-cell;
+			background-color: red;
+			color: black;
+			width: 5%;
+			height: 5px;
+			font-size: 10px;
+			border-radius: 10px;
+			padding: 5px;
+		}
+
+		.Sub-Column-2-yellow {
+			display: table-cell;
+			background-color: yellow;
+			color: black;
+			width: 5%;
+			height: 5px;
+			font-size: 10px;
+			border-radius: 10px;
+			padding: 5px;
+		}
+
+		.Sub-Column-2-last {
+			display: table-cell;
+			background-color: lightgray;
+			color: black;
+			width: 40%;
+			padding: 0;
+			font-size: 10px;
+		}
+
+		.Sub-Column-3-inactive {
+			display: table-cell;
+			background-color: grey;
+			color: navy;
+			padding: 5px;
+			width: 14%;
+		}
+
+		.Sub-Column-3-inactive-list {
+			display: table-cell;
+			background-color: grey;
+			color: navy;
+			padding: 5px;
+			width: 2%;
+		}
+
+		.col1 {
+			width: 60px;
+			height: auto;
+			padding: 15px;
+			padding-bottom: 0;
+		}
+
+		.col3 {
+			padding: 15px;
+			padding-bottom: 0;
+		}
+
+		.back {
+			width: 20px;
+			height: auto;
+			margin-right: 5px;
+			margin-bottom: 17px;
+
+		}
+
+		.reload {
+			width: 30px;
+			height: auto;
+			float: right;
+			margin-top: 15px;
+			margin-right: 15px;
+
+		}
+
+		.search {
+			width: 30px;
+			height: auto;
+			float: right;
+			margin-bottom: 10px;
+
+		}
+
+		.sign {
+			width: 15px;
+			height: auto;
+			float: left;
+			margin-top: 15px;
+			margin-right: 10px;
+		}
+
+		.list {
+			width: 15px;
+			height: 15px;
+			margin: 0;
+		}
+
+		.profile {
+			width: 20px;
+			height: auto;
+			float: left;
+			margin-top: 15px;
+			margin-right: 15px;
+		}
+
+		.rawat {
+			color: black;
+			width: 100px;
+			margin-left: 10px;
+			float: left;
+		}
+
+		.pasien {
+			color: black;
+			margin-right: 10px;
+			float: right;
+			text-align: center;
+			margin-bottom: 0;
+			font-size: 10px;
+		}
+
+		.Autoanamnesis {
+			color: black;
+			margin-right: 10px;
+			text-align: left;
+			margin-bottom: 0;
+			font-size: 8px;
+		}
+
+		.tanggal {
+			color: navy;
+			margin-right: 10px;
+			float: right;
+			text-align: center;
+			margin-bottom: 0;
+			font-size: 10px;
+			text-decoration: underline;
+		}
+
+		.tanggal-grey {
+			color: grey;
+			margin-right: 10px;
+			float: right;
+			text-align: center;
+			margin-bottom: 0;
+			font-size: 10px;
+		}
+
+		.content-3 {
+			text-align: center;
+			font-size: 9px;
+		}
+
+		.keluhan {
+			color: black;
+			margin-right: 10px;
+			margin-left: 10px;
+			margin-bottom: 10px;
+			font-size: 10px;
+		}
+
+		.keluhan-right {
+			color: black;
+			margin-right: 10px;
+			margin-left: 10px;
+			margin-bottom: 10px;
+			font-size: 10px;
+		}
+
+		.subcontent {
+			color: black;
+			margin-right: 10px;
+			margin-left: 10px;
+			text-align: right;
+			font-size: 7px;
+		}
+
+		.subcontent-2 {
+			color: black;
+			text-align: center;
+			font-size: 6px;
+			margin-bottom: 0;
+		}
+
+		.riwayat {
+			color: black;
+			margin-right: 10px;
+			margin-left: 10px;
+			text-align: center;
+			font-size: 14px;
+		}
+
+		.hplus3 {
+			color: black;
+			margin-right: 10px;
+			margin-left: 10px;
+			margin-top: 0;
+			margin-bottom: 0;
+			text-align: center;
+			padding: 0;
+			font-size: 7px;
+		}
+
+		.tanda {
+			text-align: left;
+		}
+
+		.circle {
+			width: 20px;
+			height: auto;
+			float: left;
+			margin-top: 15px;
+			margin-right: 15px;
+		}
+
+		.col-right {
+			width: 30%;
+			padding: 10px;
+			background-color: white;
+		}
+
+		.col-right-2 {
+			width: 50%;
+			padding: 10px;
+			background-color: white
+		}
+
+		.col-1-2 {
+			width: 30%;
+			padding: 10px;
+		}
+
+		.col-3-2 {
+			width: 18%;
+			padding: 10px;
+		}
+
+		.col-4-2 {
+			width: 25%;
+			padding: 10px;
+		}
+
+		.col-5-2 {
+			width: 25%;
+			padding: 10px;
+			background-color: mediumturquoise;
+		}
+
+		.underline {
+			text-decoration: underline;
+			font-weight: bold;
+		}
+
+		.leftside-content {
+			width: 20%;
+			padding: 10px;
+			background-color: lightblue;
+		}
+
+		.rightside-content {
+			padding: 10px;
+			background-color: navy;
+		}
+
+		.rightside-content-left {
+			padding: 10px;
+			background-color: black;
+			width: 25%;
+		}
+
+		.rightside-content-right {
+			padding: 10px;
+			background-color: white;
+			width: 75%;
 		}
 	</style>
 </head>
-<body>	
+
+<body>
 	<div id="headwrap">
 		<div class="head">
 			<div class="logo">PT Karya Garda Medica</div>
@@ -29,20 +451,467 @@
 		<h1><span class="red">EHR</span> Mockup</h1>
 
 		<p>
-		Gunakan HTML, CSS dan Js tdalam membuat tampilan seperti itu. 
+			Gunakan HTML, CSS dan Js tdalam membuat tampilan seperti itu.
 
 		<div class="picture">
 			<img src="../img/EHR.jpg" />
 			<p>Contoh Tampilan.</p>
 		</div>
 
-		<hr/>
+		<hr />
 
 		<div id="container">
 			Tampilkan dibawah ini
+			<div id="left-panel" class="left-nav-wrapper">
+				<ul class="navigation-panel">
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+							viewBox="0 0 226 226" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,226v-226h226v226z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M113,19.77132l-103.58333,93.22868h28.25v84.75h56.5v-65.91667h37.66667v65.91667h56.5v-84.75h28.25z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Home</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+							viewBox="0 0 226 226" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,226v-226h226v226z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M113,19.77132l-103.58333,93.22868h28.25v84.75h56.5v-65.91667h37.66667v65.91667h56.5v-84.75h28.25z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Antrian</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+							viewBox="0 0 172 172" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M96.75,14.33333c-5.934,0 -10.75,4.816 -10.75,10.75v3.58333h-64.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v78.83333c0.0004,3.95788 3.20879,7.16627 7.16667,7.16667h14.33333c0,11.78924 9.71076,21.5 21.5,21.5c11.78924,0 21.5,-9.71076 21.5,-21.5h28.66667c0,11.78924 9.71076,21.5 21.5,21.5c11.78924,0 21.5,-9.71076 21.5,-21.5h14.33333c3.95788,-0.0004 7.16627,-3.20879 7.16667,-7.16667v-43c0.00026,-1.11265 -0.25852,-2.21009 -0.75586,-3.20541l-19.51237,-39.02474l-0.014,-0.014c-2.41954,-4.83667 -7.40053,-7.92253 -12.80762,-7.92253h-24.24349v-3.58333c0,-5.934 -4.816,-10.75 -10.75,-10.75zM114.66667,43h17.06282l17.91667,35.83333h-27.81282c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667zM57.33333,50.16667c3.956,0 7.16667,3.21067 7.16667,7.16667v7.16667h7.16667c3.956,0 7.16667,3.21067 7.16667,7.16667c0,3.956 -3.21067,7.16667 -7.16667,7.16667h-7.16667v7.16667c0,3.956 -3.21067,7.16667 -7.16667,7.16667c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667v-7.16667h-7.16667c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667c0,-3.956 3.21067,-7.16667 7.16667,-7.16667h7.16667v-7.16667c0,-3.956 3.21067,-7.16667 7.16667,-7.16667zM50.16667,121.83333c4.04293,0 7.16667,3.12374 7.16667,7.16667c0,4.04292 -3.12374,7.16667 -7.16667,7.16667c-4.04293,0 -7.16667,-3.12374 -7.16667,-7.16667c0,-4.04292 3.12374,-7.16667 7.16667,-7.16667zM121.83333,121.83333c4.04292,0 7.16667,3.12374 7.16667,7.16667c0,4.04292 -3.12374,7.16667 -7.16667,7.16667c-4.04292,0 -7.16667,-3.12374 -7.16667,-7.16667c0,-4.04292 3.12374,-7.16667 7.16667,-7.16667z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Regis</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64"
+							viewBox="0 0 172 172" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M28.66667,14.33333c-3.827,0 -7.43228,1.49022 -10.13411,4.19922c-2.709,2.709 -4.19922,6.31428 -4.19922,10.13411v21.5c0,21.08459 13.11534,39.08991 31.59212,46.48535c2.53586,4.4115 6.54651,7.80526 11.40788,9.53223v22.81576c0,15.80967 12.857,28.66667 28.66667,28.66667h28.66667c15.80967,0 28.66667,-12.857 28.66667,-28.66667v-1.31576c8.33367,-2.96048 14.33333,-10.83443 14.33333,-20.18424c0,-11.87517 -9.62483,-21.5 -21.5,-21.5c-11.87517,0 -21.5,9.62483 -21.5,21.5c0,9.34981 5.99966,17.22376 14.33333,20.18424v1.31576c0,7.90483 -6.4285,14.33333 -14.33333,14.33333h-28.66667c-7.90483,0 -14.33333,-6.4285 -14.33333,-14.33333v-22.81576c4.86137,-1.72697 8.87202,-5.12073 11.40788,-9.53223c18.47678,-7.40227 31.59212,-25.43692 31.59212,-46.65332v-21.33203c0,-7.90483 -6.4285,-14.33333 -14.33333,-14.33333h-14.33333v14.33333h14.33333v21.5c0,19.7585 -16.07483,35.83333 -35.83333,35.83333c-19.7585,0 -35.8265,-16.07797 -35.81934,-36.0013l-0.014,-21.33203h14.33333v-14.33333zM136.16667,98.54167c4.945,0 8.95833,4.01333 8.95833,8.95833c0,4.945 -4.01333,8.95833 -8.95833,8.95833c-4.945,0 -8.95833,-4.01333 -8.95833,-8.95833c0,-4.945 4.01333,-8.95833 8.95833,-8.95833z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Rajal</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+							viewBox="0 0 172 172" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M16.04102,28.58968c-2.96578,0.04633 -5.33356,2.48614 -5.29102,5.45199v103.91667c-0.02741,1.93842 0.99102,3.74144 2.66532,4.71865c1.6743,0.97721 3.74507,0.97721 5.41937,0c1.6743,-0.97721 2.69273,-2.78023 2.66532,-4.71865v-5.375h129v5.375c-0.02741,1.93842 0.99102,3.74144 2.66532,4.71865c1.6743,0.97721 3.74507,0.97721 5.41937,0c1.6743,-0.97721 2.69273,-2.78023 2.66532,-4.71865v-10.75v-10.75c0,-6.92658 -5.61508,-12.54167 -12.54167,-12.54167h-127.20833v-69.875c0.02085,-1.45347 -0.54782,-2.85342 -1.57634,-3.88062c-1.02852,-1.0272 -2.4292,-1.59408 -3.88264,-1.57136zM43,75.25c-7.91558,0 -14.33333,6.41775 -14.33333,14.33333v7.16667h46.58333v-7.16667c0,-7.91558 -6.41775,-14.33333 -14.33333,-14.33333z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Ranap</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64"
+							viewBox="0 0 172 172" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M5.375,14.78125c-2.28438,0 -4.03125,1.74687 -4.03125,4.03125v147.8125c0,2.28438 1.74687,4.03125 4.03125,4.03125h147.8125c2.28438,0 4.03125,-1.74687 4.03125,-4.03125c0,-2.28438 -1.74687,-4.03125 -4.03125,-4.03125h-143.78125v-143.78125c0,-2.28438 -1.74688,-4.03125 -4.03125,-4.03125zM139.75,55.09375c-2.28438,0 -4.03125,1.74687 -4.03125,4.03125c0,2.28438 1.74687,4.03125 4.03125,4.03125h17.20105l-41.2547,41.11822c-1.6125,1.6125 -4.16457,1.6125 -5.6427,0l-28.89062,-28.89062c-4.70312,-4.70312 -12.36407,-4.70312 -17.0672,0l-14.51093,14.51355c-1.6125,1.6125 -1.6125,4.16457 0,5.6427c0.80625,0.80625 1.88072,1.2099 2.82135,1.2099c0.94063,0 2.0151,-0.40365 2.82135,-1.2099l14.51355,-14.51093c1.6125,-1.6125 4.16457,-1.6125 5.6427,0l28.89063,28.89063c4.70313,4.70313 12.36407,4.70313 17.0672,0l41.25208,-41.12085v17.20105c0,2.28437 1.74687,4.03125 4.03125,4.03125c2.28438,0 4.03125,-1.74688 4.03125,-4.03125v-26.875c0,-2.28438 -1.74687,-4.03125 -4.03125,-4.03125zM37.57513,103.46875c-1.02461,0 -2.03242,0.40365 -2.77148,1.2099l-5.375,5.375c-1.6125,1.6125 -1.6125,4.16457 0,5.6427c0.80625,0.80625 1.88072,1.2099 2.82135,1.2099c0.94062,0 2.0151,-0.40365 2.82135,-1.2099l5.375,-5.375c1.6125,-1.6125 1.6125,-4.16457 0,-5.6427c-0.80625,-0.80625 -1.84661,-1.2099 -2.87121,-1.2099z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Rekmed</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+							viewBox="0 0 172 172" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M17.2,13.76c-1.89888,0 -3.44,1.54112 -3.44,3.44v89.44c0,3.8012 3.0788,6.88 6.88,6.88h130.72c3.8012,0 6.88,-3.0788 6.88,-6.88v-89.44c0,-1.89888 -1.54112,-3.44 -3.44,-3.44zM34.4,30.96h103.2c1.89888,0 3.44,1.54112 3.44,3.44v58.48c0,1.89888 -1.54112,3.44 -3.44,3.44h-103.2c-1.89888,0 -3.44,-1.54112 -3.44,-3.44v-58.48c0,-1.89888 1.54112,-3.44 3.44,-3.44zM20.64,120.4c-3.8012,0 -6.88,3.0788 -6.88,6.88v27.52c0,1.89888 1.54112,3.44 3.44,3.44h137.6c1.89888,0 3.44,-1.54112 3.44,-3.44v-27.52c0,-3.8012 -3.0788,-6.88 -6.88,-6.88zM130.72,130.72c3.79776,0 6.88,3.0788 6.88,6.88c0,3.8012 -3.08224,6.88 -6.88,6.88c-3.79776,0 -6.88,-3.0788 -6.88,-6.88c0,-3.8012 3.08224,-6.88 6.88,-6.88zM34.4,134.16h55.04v6.88h-55.04z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Farmasi</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64"
+							viewBox="0 0 172 172" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M5.375,14.78125c-2.28438,0 -4.03125,1.74687 -4.03125,4.03125v147.8125c0,2.28438 1.74687,4.03125 4.03125,4.03125h147.8125c2.28438,0 4.03125,-1.74687 4.03125,-4.03125c0,-2.28438 -1.74687,-4.03125 -4.03125,-4.03125h-143.78125v-143.78125c0,-2.28438 -1.74688,-4.03125 -4.03125,-4.03125zM139.75,55.09375c-2.28438,0 -4.03125,1.74687 -4.03125,4.03125c0,2.28438 1.74687,4.03125 4.03125,4.03125h17.20105l-41.2547,41.11822c-1.6125,1.6125 -4.16457,1.6125 -5.6427,0l-28.89062,-28.89062c-4.70312,-4.70312 -12.36407,-4.70312 -17.0672,0l-14.51093,14.51355c-1.6125,1.6125 -1.6125,4.16457 0,5.6427c0.80625,0.80625 1.88072,1.2099 2.82135,1.2099c0.94063,0 2.0151,-0.40365 2.82135,-1.2099l14.51355,-14.51093c1.6125,-1.6125 4.16457,-1.6125 5.6427,0l28.89063,28.89063c4.70313,4.70313 12.36407,4.70313 17.0672,0l41.25208,-41.12085v17.20105c0,2.28437 1.74687,4.03125 4.03125,4.03125c2.28438,0 4.03125,-1.74688 4.03125,-4.03125v-26.875c0,-2.28438 -1.74687,-4.03125 -4.03125,-4.03125zM37.57513,103.46875c-1.02461,0 -2.03242,0.40365 -2.77148,1.2099l-5.375,5.375c-1.6125,1.6125 -1.6125,4.16457 0,5.6427c0.80625,0.80625 1.88072,1.2099 2.82135,1.2099c0.94062,0 2.0151,-0.40365 2.82135,-1.2099l5.375,-5.375c1.6125,-1.6125 1.6125,-4.16457 0,-5.6427c-0.80625,-0.80625 -1.84661,-1.2099 -2.87121,-1.2099z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Radiologi</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+							viewBox="0 0 172 172" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M17.2,13.76c-1.89888,0 -3.44,1.54112 -3.44,3.44v89.44c0,3.8012 3.0788,6.88 6.88,6.88h130.72c3.8012,0 6.88,-3.0788 6.88,-6.88v-89.44c0,-1.89888 -1.54112,-3.44 -3.44,-3.44zM34.4,30.96h103.2c1.89888,0 3.44,1.54112 3.44,3.44v58.48c0,1.89888 -1.54112,3.44 -3.44,3.44h-103.2c-1.89888,0 -3.44,-1.54112 -3.44,-3.44v-58.48c0,-1.89888 1.54112,-3.44 3.44,-3.44zM20.64,120.4c-3.8012,0 -6.88,3.0788 -6.88,6.88v27.52c0,1.89888 1.54112,3.44 3.44,3.44h137.6c1.89888,0 3.44,-1.54112 3.44,-3.44v-27.52c0,-3.8012 -3.0788,-6.88 -6.88,-6.88zM130.72,130.72c3.79776,0 6.88,3.0788 6.88,6.88c0,3.8012 -3.08224,6.88 -6.88,6.88c-3.79776,0 -6.88,-3.0788 -6.88,-6.88c0,-3.8012 3.08224,-6.88 6.88,-6.88zM34.4,134.16h55.04v6.88h-55.04z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Lab</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+							viewBox="0 0 172 172" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M17.2,13.76c-1.89888,0 -3.44,1.54112 -3.44,3.44v89.44c0,3.8012 3.0788,6.88 6.88,6.88h130.72c3.8012,0 6.88,-3.0788 6.88,-6.88v-89.44c0,-1.89888 -1.54112,-3.44 -3.44,-3.44zM34.4,30.96h103.2c1.89888,0 3.44,1.54112 3.44,3.44v58.48c0,1.89888 -1.54112,3.44 -3.44,3.44h-103.2c-1.89888,0 -3.44,-1.54112 -3.44,-3.44v-58.48c0,-1.89888 1.54112,-3.44 3.44,-3.44zM20.64,120.4c-3.8012,0 -6.88,3.0788 -6.88,6.88v27.52c0,1.89888 1.54112,3.44 3.44,3.44h137.6c1.89888,0 3.44,-1.54112 3.44,-3.44v-27.52c0,-3.8012 -3.0788,-6.88 -6.88,-6.88zM130.72,130.72c3.79776,0 6.88,3.0788 6.88,6.88c0,3.8012 -3.08224,6.88 -6.88,6.88c-3.79776,0 -6.88,-3.0788 -6.88,-6.88c0,-3.8012 3.08224,-6.88 6.88,-6.88zM34.4,134.16h55.04v6.88h-55.04z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Kasir</p>
+					</li>
+					<li>
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+							viewBox="0 0 172 172" style=" fill:#000000;" class="icon-sidebar">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#95a5a6">
+									<path
+										d="M17.2,13.76c-1.89888,0 -3.44,1.54112 -3.44,3.44v89.44c0,3.8012 3.0788,6.88 6.88,6.88h130.72c3.8012,0 6.88,-3.0788 6.88,-6.88v-89.44c0,-1.89888 -1.54112,-3.44 -3.44,-3.44zM34.4,30.96h103.2c1.89888,0 3.44,1.54112 3.44,3.44v58.48c0,1.89888 -1.54112,3.44 -3.44,3.44h-103.2c-1.89888,0 -3.44,-1.54112 -3.44,-3.44v-58.48c0,-1.89888 1.54112,-3.44 3.44,-3.44zM20.64,120.4c-3.8012,0 -6.88,3.0788 -6.88,6.88v27.52c0,1.89888 1.54112,3.44 3.44,3.44h137.6c1.89888,0 3.44,-1.54112 3.44,-3.44v-27.52c0,-3.8012 -3.0788,-6.88 -6.88,-6.88zM130.72,130.72c3.79776,0 6.88,3.0788 6.88,6.88c0,3.8012 -3.08224,6.88 -6.88,6.88c-3.79776,0 -6.88,-3.0788 -6.88,-6.88c0,-3.8012 3.08224,-6.88 6.88,-6.88zM34.4,134.16h55.04v6.88h-55.04z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<p class="icon-title">Sekre</p>
+					</li>
+				</ul>
+				<div class="cross-btn" onclick="showNav()">
+					<span>X</span>
+				</div>
+			</div>
+			<div class="right-content-wrapper">
+				<div id="content-1" class="content right-pan-normal-mode" style="display: block">
+					<div id="top">
+						<div class="Row">
+							<div class="Column col1"><img src="https://img.icons8.com/metro/64/000000/back.png"
+									class="back" /></div>
+							<div class="Column">
+								<h4 class="rawat">Rawat Jalan</h4><img
+									src="https://img.icons8.com/pastel-glyph/64/000000/hexagon-reload.png"
+									class="reload" />
+							</div>
+							<div class="Column col3"><img src="https://img.icons8.com/android/24/000000/search.png"
+									class="search" /></div>
+						</div>
+						<div class="Row">
+							<div class="Column-2 col-1-2">
+								<img src="https://img.icons8.com/android/24/000000/female.png" class="sign" />
+								<p class="pasien">Nama (Usia)</p>
+								<h4 class="pasien">Ny. Mariana (23)</h4>
+							</div>
+							<div class="Column-2 col-3-2">
+								<p class="pasien">Tanggal Lahir</p>
+								<h4 class="pasien">13 Januari 1997</h4>
+							</div>
+							<div class="Column-2 col-3-2">
+								<p class="pasien">Nomor Rekam Medis</p>
+								<h4 class="pasien">001234567</h4>
+							</div>
+							<div class="Column-2 col-4-2">
+								<p class="pasien">DPJP</p>
+								<h4 class="pasien">dr. Feby Bahari , SpPD, KGEH</h4>
+							</div>
+							<div class="Column-2 col-5-2">
+								<img src="https://img.icons8.com/ios-glyphs/30/000000/gender-neutral-user.png"
+									class="profile" />
+								<p class="pasien">Anda Masuk Sebagai</p>
+								<h4 class="pasien">dr. Dany Petra, SpPD</h4>
+							</div>
+						</div>
+						<div class="Row">
+							<div class="Column-2">
+								<div class="Row">
+									<p class="keluhan">Keluhan Utama</p>
+									<h4 class="keluhan">KU: Muntah berdarah sejak 1 hari lalu</h4>
+								</div>
+								<hr />
+								<div class="Row">
+									<p class="keluhan">Diagnosis Primer dan Sekunder</p>
+									<h4 class="keluhan">DP: Esophageal varces with bleeding</h4>
+								</div>
+							</div>
+							<div class="Column-2">
+								<div class="Row">
+									<div class="Sub-Column-2">
+										<h4 class="subcontent tanda">Tanda-tanda Vital</h4>
+									</div>
+									<div class="Sub-Column-2-grey">
+										<h4 class="hplus3">H+3</h4>
+									</div>
+									<div class="Sub-Column-2-last">
+										<h4 class="subcontent">Last Update: <span class="underline">SELASA, 27 OKT 2020.
+												06.30 WIB</span> </h4>
+									</div>
+								</div>
+								<div class="Row">
+									<div class="Sub-Column-2-green">
+										<p class="subcontent-2">Kesadaran</p>
+										<h4 class="subcontent-2">Compos Mentis</h4>
+									</div>
+									<div class="Sub-Column-2-green">
+										<p class="subcontent-2">Tekanan Darah</p>
+										<h4 class="subcontent-2">110/70 mmHg</h4>
+									</div>
+									<div class="Sub-Column-2-red">
+										<p class="subcontent-2">Laju Nadi</p>
+										<h4 class="subcontent-2">120 kali/menit</h4>
+									</div>
+									<div class="Sub-Column-2-yellow">
+										<p class="subcontent-2">Laju Napas</p>
+										<h4 class="subcontent-2">20 kali/menit</h4>
+									</div>
+									<div class="Sub-Column-2-green">
+										<p class="subcontent-2">Suhu Tubuh</p>
+										<h4 class="subcontent-2">37, 3 C</h4>
+									</div>
+									<div class="Sub-Column-2-yellow">
+										<p class="subcontent-2">EWS</p>
+										<h4 class="subcontent-2">3</h4>
+									</div>
+								</div>
 
-			
+							</div>
+						</div>
+						<div class="Row">
+							<div class="Column-3">
+								<div class="Sub-Column-3">
+									<h4 class="content-3">Pengkajian Awal</h4>
+								</div>
+								<div class="Sub-Column-3-inactive">
+									<h4 class="content-3">Lab/Radiologi</h4>
+								</div>
+								<div class="Sub-Column-3-inactive">
+									<h4 class="content-3">CPPT Ranap</h4>
+								</div>
+								<div class="Sub-Column-3-inactive">
+									<h4 class="content-3">Informed Concent</h4>
+								</div>
+								<div class="Sub-Column-3-inactive">
+									<h4 class="content-3">Skrining</h4>
+								</div>
+								<div class="Sub-Column-3-inactive">
+									<h4 class="content-3">Rekonsilasi Obat</h4>
+								</div>
+								<div class="Sub-Column-3-inactive">
+									<h4 class="content-3">Resume Medis</h4>
+								</div>
+								<div class="Sub-Column-3-inactive-list">
+									<img src="https://img.icons8.com/ios-glyphs/30/000000/list.png" class="list" />
+								</div>
+							</div>
+						</div>
+						<div class="Row">
+							<div class="Column-2 leftside-content">
+								<h4 class="riwayat">Riwayat Berobat</h4>
+								<div class="Row">
+									<div class="Column-2 leftside-content">
+										<img src="https://img.icons8.com/color/48/000000/circled.png" class="circle" />
+										<h4 class="tanggal">25 OKT 2020</h4>
+										<p class="tanggal">IGD-Ranap</p>
+									</div>
+								</div>
+								<div class="Row">
+									<div class="Column-2 leftside-content">
+										<img src="https://img.icons8.com/color/48/000000/circled.png" class="circle" />
+										<h4 class="tanggal-grey">3 OKT 2020</h4>
+										<p class="tanggal-grey">RAJAL</p>
+									</div>
+								</div>
+								<div class="Row">
+									<div class="Column-2 leftside-content">
+										<img src="https://img.icons8.com/color/48/000000/circled.png" class="circle" />
+										<h4 class="tanggal-grey">4 SEP 2020</h4>
+										<p class="tanggal-grey">RAJAL</p>
+									</div>
+								</div>
+								<div class="Row">
+									<div class="Column-2 leftside-content">
+										<img src="https://img.icons8.com/color/48/000000/circled.png" class="circle" />
+										<h4 class="tanggal-grey">20 JUN 2020</h4>
+										<p class="tanggal-grey">IGD</p>
+									</div>
+								</div>
+								<div class="Row">
+									<div class="Column-2 leftside-content">
+										<img src="https://img.icons8.com/color/48/000000/circled.png" class="circle" />
+										<h4 class="tanggal-grey">1 FEB 2020</h4>
+										<p class="tanggal-grey">IGD-Ranap</p>
+									</div>
+								</div>
+							</div>
+							<div class="Column-2 rightside-content">
+								<div class="Column-2 rightside-content-left">
+									<div class="Row">
+										<div class="Sub-Column-3">
+											<h4 class="content-3">Anamnesis</h4>
+										</div>
+									</div>
+									<div class="Row">
+										<div class="Sub-Column-3-inactive">
+											<h4 class="content-3">Riw. Alergi</h4>
+										</div>
+									</div>
+									<div class="Row">
+										<div class="Sub-Column-3-inactive">
+											<h4 class="content-3">Status Nyeri</h4>
+										</div>
+									</div>
+									<div class="Row">
+										<div class="Sub-Column-3-inactive">
+											<h4 class="content-3">Fungsional</h4>
+										</div>
+									</div>
+									<div class="Row">
+										<div class="Sub-Column-3-inactive">
+											<h4 class="content-3">Resiko Jatuh</h4>
+										</div>
+									</div>
+									<div class="Row">
+										<div class="Sub-Column-3-inactive">
+											<h4 class="content-3">Skrining Gizi</h4>
+										</div>
+									</div>
+									<div class="Row">
+										<div class="Sub-Column-3-inactive">
+											<h4 class="content-3">Edukasi</h4>
+										</div>
+									</div>
+									<div class="Row">
+										<div class="Sub-Column-3-inactive">
+											<h4 class="content-3">Pem. Fisik</h4>
+										</div>
+									</div>
+								</div>
+								<div class="Column-2 rightside-content-right">
+									<h4 class="riwayat">Pengkasijan Awal Pasien Rawat Inap</h4>
+									<div class="Row">
+										<div class="Column-2 col-right">
+											<h4 class="Autoanamnesis">Autoanamnesis</h4>
+											<h4 class="Autoanamnesis">Alloanamnesis: Tn. Rizal (Suami)</h4>
+										</div>
+										<div class="Column-2 col-right-2">
+											<h4 class="Autoanamnesis">Tanggal Masuk: Senin, 26 Okt 2020, 12.00 WIB</h4>
+											<h4 class="Autoanamnesis">Anamnesis: dr. Sukma Ayu</h4>
+										</div>
+									</div>
+									<div class="Row-keluhan">
+										<div class="Column-keluhan">
+											<h4 class="keluhan-right">Keluhan Utama: Muntah darah sejak 1 hari lalu</h4>
+										</div>
+									</div>
+									<div class="Row-keluhan">
+										<div class="Column-keluhan">
+											<h4 class="keluhan-right">Riwayat Penyakit Sekarang: Pasien mengalami Lorem
+												ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lobortis
+												pellentesque augue eget lacinia. Donec luctus ex quis arcu efficitur,
+												vel dapibus enim accumsan. Donec quis nisl porta, laoreet magna vitae,
+												scelerisque nulla.</h4>
+										</div>
+									</div>
+									<div class="Row-keluhan">
+										<div class="Column-keluhan">
+											<h4 class="keluhan-right">Riwayat Penyakit Dahulu: Pasien pernah mengalami Lorem
+												ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lobortis
+												pellentesque augue eget lacinia. Donec luctus ex quis arcu efficitur,
+												vel dapibus enim accumsan. Donec quis nisl porta, laoreet magna vitae,
+												scelerisque nulla.</h4>
+										</div>
+									</div>
+									<div class="Row-keluhan">
+										<div class="Column-keluhan">
+											<h4 class="keluhan-right">Riwayat Penyakit Keluarga: Kakak pasien pernah mengalami Lorem
+												ipsum dolor sit amet, consectetur adipiscing elit. Phasellus lobortis
+												pellentesque augue eget lacinia. Donec luctus ex quis arcu efficitur,
+												vel dapibus enim accumsan. Donec quis nisl porta, laoreet magna vitae,
+												scelerisque nulla.</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+	</div>
 </body>
+
 </html>

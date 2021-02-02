@@ -105,9 +105,8 @@ span.red {
 /* Image Rotator */
 #rotator {
 	width: 450px;
-	height: 300px;
+	height: auto;
 	border: 1px solid black;
-	background: #aaa;
 	text-align: center;
 }
 img {
@@ -125,3 +124,13 @@ img {
 .slider > div {
 	margin-top: -2rem;
 }
+
+.rotating-img{
+	-webkit-animation:spin 3s linear;
+    -moz-animation:spin 3s linear;
+    animation:spin 3s linear;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

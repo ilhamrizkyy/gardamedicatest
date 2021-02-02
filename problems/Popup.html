@@ -1,25 +1,65 @@
 <!doctype html>
 <html>
+
 <head>
 	<title>Frontend Coding Test</title>
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<style type="text/css">
 		.picture {
 			background-color: #F9F9F9;
-			border: 1px solid #CCCCCC; padding: 3px;
+			border: 1px solid #CCCCCC;
+			padding: 3px;
 			text-align: center;
 			margin: 0 0 18px 0;
 			width: 647px;
 			color: #000;
 		}
-		
+
 		.picture img {
 			border: 1px solid #CCCCCC;
-			vertical-align:middle; margin-bottom: 3px;
+			vertical-align: middle;
+			margin-bottom: 3px;
+		}
+
+		.modal-header-medium {
+			background-color: forestgreen;
+			color: white;
+		}
+
+		.modal-header-large {
+			background-color: aqua;
+			color: black;
+		}
+
+		.modal-header-small {
+			background-color: crimson;
+			color: white;
+		}
+
+		#myModal2{
+			-moz-transform: scaleX(-1);
+			-o-transform: scaleX(-1);
+			-webkit-transform: scaleX(-1);
+			transform: scaleX(-1);
+			filter: FlipH;
+			-ms-filter: "FlipH";
+		}
+
+		.modal-content-large {
+			-moz-transform: scaleY(-1);
+			-o-transform: scaleY(-1);
+			-webkit-transform: scaleY(-1);
+			transform: scaleY(-1);
+			filter: FlipV;
+			-ms-filter: "FlipV";
 		}
 	</style>
 </head>
-<body>	
+
+<body>
 	<div id="headwrap">
 		<div class="head">
 			<div class="logo">PT Karya Garda Medica</div>
@@ -29,23 +69,73 @@
 		<h1><span class="red">Pop</span> Up</h1>
 		<p>Buatlah tampilan popup jika mengklik ketiga button tersebut</p>
 		<p>Sudah disediakan data-toggle dan data-target</p>
-		<p>Isi dari pop up bebas, yang saya inginkan adalah tampilan popup dan ketiganya bebrbentuk beda apakah flip, zoom in dsb</p>
+		<p>Isi dari pop up bebas, yang saya inginkan adalah tampilan popup dan ketiganya bebrbentuk beda apakah flip,
+			zoom in dsb</p>
 
 		<p>
-			<div class="boxs-body">
-				<button class="btn btn-raised btn-default" data-toggle="modal" data-target="#myModal">Open me!</button>
-				<button class="btn btn-raised btn-default" data-toggle="modal" data-target="#myModal2">Large modal</button>
-				<button class="btn btn-raised btn-default" data-toggle="modal" data-target="#myModal3">Small modal</button>
-			</div>
+		<div class="boxs-body">
+			<button class="btn btn-raised btn-default" data-toggle="modal" data-target="#myModal"
+				id="modal-button-1">Open me!</button>
+			<button class="btn btn-raised btn-default" data-toggle="modal" data-target="#myModal2"
+				id="modal-button-2">Large modal</button>
+			<button class="btn btn-raised btn-default" data-toggle="modal" data-target="#myModal3"
+				id="modal-button-3">Small modal</button>
+		</div>
 
 
-		<hr/>
+		<hr />
 
 		<div id="container">
-			
-
-			
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog modal-md">
+					<div class="modal-content">
+						<div class="modal-header modal-header-medium">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Medium Header</h4>
+						</div>
+						<div class="modal-body">
+							<h4>This is medium Modal</h4>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal modal-med fade" id="myModal2" role="dialog">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content modal-content-large">
+						<div class="modal-header modal-header-large">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Large Header</h4>
+						</div>
+						<div class="modal-body">
+							<h3>This is Large Modal</h3>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="myModal3" role="dialog">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header modal-header-small">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Small Header</h4>
+						</div>
+						<div class="modal-body">
+							<p>This is Small Modal</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
+
 </html>
